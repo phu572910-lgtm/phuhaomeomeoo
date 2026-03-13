@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điều đặc biệt dành cho cậu ✨</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #fff5f5 0%, #ffe3e3 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; color: #444; }
+        .container { background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4); width: 90%; max-width: 450px; text-align: center; border: 1px solid #ffcad4; }
+        h2 { color: #ff4d6d; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1.5px solid #ffcad4; border-radius: 12px; box-sizing: border-box; outline: none; transition: 0.3s; }
+        input:focus { border-color: #ff4d6d; box-shadow: 0 0 8px rgba(255, 77, 109, 0.2); }
+        button { background-color: #ff4d6d; color: white; border: none; padding: 14px 30px; border-radius: 25px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; margin-top: 15px; width: 100%; }
+        button:hover { background-color: #ff758f; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3); }
+        #message-area { display: none; white-space: pre-line; line-height: 1.8; font-style: italic; color: #555; animation: fadeIn 1.2s ease-in-out; }
+        .heart { color: #ff4d6d; font-size: 24px; margin-top: 10px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="input-form">
+        <h2>✨ Gửi điều bất ngờ ✨</h2>
+        <input type="text" id="ten" placeholder="Bạn tên là gì thế :3">
+        <input type="text" id="thich" placeholder="Bạn thích điều gì dọ ><">
+        <input type="text" id="no" placeholder="Bạn đang ở đâu dị nè">
+        <button onclick="taoLoiTinh()">Xem điều đặc biệt</button>
+    </div>
+
+    <div id="message-area">
+        <h2 style="font-style: normal;">Gửi cậu...</h2>
+        <p id="content" style="text-align: left;"></p>
+        <div class="heart">❤️</div>
+        <button onclick="location.reload()" style="background: #f0f0f0; color: #888; margin-top: 20px; font-size: 13px;">Quay lại</button>
+    </div>
+</div>
+
+<script>
+    function taoLoiTinh() {
+        const ten = document.getElementById('ten').value;
+        const thich = document.getElementById('thich').value;
+        const no = document.getElementById('no').value;
+
+        if(!ten || !thich || !no) {
+            alert("Cậu điền đủ thông tin để tớ gửi lời nhắn nhé! :3");
+            return;
+        }
+
+        const loi_tinh = [
+            `${ten} à,\nGiữa thế giới bao la này chúng ta lại có thể gặp được nhau đúng là tuyệt vời nhỉ.\nTheo tớ được biết thì cậu thích ${thich} đúng hơm.\n\nKhông biết ở ${no}, có ngày nào mình được cùng cậu đi dạo, trò chuyện và cùng nhau tận hưởng những điều giản dị đó không?`,
+            `${ten},\n\nNghe nói cậu thích ${thich}.\nTự nhiên tớ nghĩ rằng, nếu một ngày nào đó ở ${no}, hai người cùng thích một điều giống nhau thì chắc cũng thú vị lắm.\n\nTớ chỉ muốn nói rằng gửi link này cho cậu không phải là ngẫu nhiên.\nCậu là người đặc biệt có thể thấy link này đấy!`,
+            `${ten} thân mến,\n\nỞ ${no} chắc có nhiều điều đẹp, nhưng tớ đoán điều làm cậu vui nhất có lẽ vẫn là ${thich}.\n\nNếu có dịp, tớ cũng muốn được cùng cậu trải nghiệm điều đó.\nHẹn cậu một ngày không xa nhé <3`
+        ];
+
+        const randomMessage = loi_tinh[Math.floor(Math.random() * loi_tinh.length)];
+        
+        document.getElementById('input-form').style.display = 'none';
+        document.getElementById('message-area').style.display = 'block';
+        document.getElementById('content').innerText = randomMessage;
+    }
+</script>
+
+</body>
+</html>
